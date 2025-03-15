@@ -29,6 +29,7 @@ Each class is **2 hours long**, blending **theory and hands-on activities**.
 
 ### **🔹 Class 1: Defining the Chatbot Scope & Setting Up** (10 pts)
 🎯 **Objective:** Understand chatbot fundamentals & set up the project.
+
 🛠 **Hands-On:**
 - Define chatbot purpose, audience & workflows.
 - Set up N8N, Supabase & obtain WhatsApp API credentials.
@@ -41,6 +42,7 @@ Each class is **2 hours long**, blending **theory and hands-on activities**.
 
 ### **🔹 Class 2: Connecting WhatsApp API & Processing Messages** (15 pts)
 🎯 **Objective:** Integrate WhatsApp API with N8N to receive messages.
+
 🛠 **Hands-On:**
 - Set up **WhatsApp API** & test message reception.
 - Create an **N8N workflow** for WhatsApp message logging.
@@ -53,6 +55,7 @@ Each class is **2 hours long**, blending **theory and hands-on activities**.
 
 ### **🔹 Class 3: Integrating OpenAI for AI-Powered Responses** (15 pts)
 🎯 **Objective:** Use OpenAI (GPT-4) for chatbot responses.
+
 🛠 **Hands-On:**
 - Set up **OpenAI API** & integrate it into N8N.
 - Experiment with **prompt engineering** to refine responses.
@@ -65,6 +68,7 @@ Each class is **2 hours long**, blending **theory and hands-on activities**.
 
 ### **🔹 Class 4: Implementing Retrieval-Augmented Generation (RAG)** (15 pts)
 🎯 **Objective:** Improve chatbot intelligence using knowledge retrieval.
+
 🛠 **Hands-On:**
 - Set up **a vector database** for RAG.
 - Implement **document embeddings & query processing**.
@@ -77,6 +81,7 @@ Each class is **2 hours long**, blending **theory and hands-on activities**.
 
 ### **🔹 Class 5: Storing Chat History & Analyzing Conversations** (15 pts)
 🎯 **Objective:** Store and analyze chatbot conversations in Supabase.
+
 🛠 **Hands-On:**
 - Design **a chat history table** in Supabase.
 - Implement **querying & analytics** to improve interactions.
@@ -89,6 +94,7 @@ Each class is **2 hours long**, blending **theory and hands-on activities**.
 
 ### **🔹 Class 6: Automating Workflows Using N8N** (15 pts)
 🎯 **Objective:** Automate chatbot interactions and tasks.
+
 🛠 **Hands-On:**
 - Create **automated chatbot actions** based on user intent.
 - Implement **scheduled tasks** (e.g., follow-ups, reminders).
@@ -101,6 +107,7 @@ Each class is **2 hours long**, blending **theory and hands-on activities**.
 
 ### **🔹 Class 7: Deploying & Fine-Tuning the Chatbot** (15 pts)
 🎯 **Objective:** Deploy the chatbot for real-world use & optimize performance.
+
 🛠 **Hands-On:**
 - Deploy chatbot for **external testing**.
 - Optimize **response speed and database queries**.
@@ -113,6 +120,7 @@ Each class is **2 hours long**, blending **theory and hands-on activities**.
 
 ### **🔹 Class 8: Live Demo & Final Presentation** (10 pts)
 🎯 **Objective:** Showcase chatbot functionality & key learnings.
+
 🛠 **Hands-On:**
 - Each student/team **presents their chatbot**.
 - Showcase **real-time interaction & workflow automation**.
