@@ -1,0 +1,37 @@
+Equity FinanceBot: Project Summary
+
+Business Goal
+Oferecer atendimento personalizado via WhatsApp para ajudar pessoas a montarem, ajustarem e acompanharem suas carteiras de investimento, de acordo com seu perfil e objetivos financeiros, de forma consultiva, automatizada e acessível.
+
+Target Audience
+	•	Investidores iniciantes ou intermediários que desejam apoio para estruturar suas carteiras de forma eficiente, personalizada e com linguagem acessível. O público busca praticidade, clareza e confiança no processo de investimento, e valoriza atendimento amigável e consultivo.
+	•	Gestoras de pequeno/médio porte que buscam automatizar o atendimento financeiro e gerar recomendações personalizadas para seus clientes.
+
+Key Features and Capabilities
+
+1. Conversational Onboarding
+	•	Identifica se o cliente possui ou não carteira de investimentos
+	•	Conduz um onboarding humanizado e natural via WhatsApp
+	•	Adapta o tom de conversa ao nível de conhecimento do cliente
+
+2. Perfil Investidor Inteligente
+	•	Realiza 12 perguntas de forma sutil e integrada à conversa
+	•	Detecta o perfil sem rotulá-lo diretamente para o usuário
+	•	Salva o perfil identificado de forma invisível (JSON)
+
+3. Carteira Personalizada
+	•	Montagem automática de carteira com até 3 perfis combinados
+	•	Considera o montante disponível antes de recomendar ativos
+	•	Geração de gráfico visual da carteira com QuickChart.io
+
+4. Acompanhamento e Ajustes
+	•	Permite ajustes posteriores conforme mudanças no mercado ou nos objetivos
+	•	Responde dúvidas comuns sobre investimentos com linguagem acessível
+	•	Reforça o relacionamento com o cliente de forma consultiva
+
+Expected Outcomes
+	•	Aumento no número de clientes com carteiras estruturadas
+	•	Redução de tempo e esforço da equipe de atendimento
+	•	Engajamento recorrente via WhatsApp com o agente Paulo
+	•	Melhora na satisfação e confiança dos investidores atendidos
+	•	Maior eficiência na conversão de leads em clientes investindo com a gestora
