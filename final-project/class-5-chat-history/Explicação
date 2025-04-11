@@ -1,0 +1,3 @@
+Nosso próprio agente usa o histórico da conversa para identificar o perfil do cliente e nos gera um output/resumo no sheets.
+
+Não usamos o histórico diretamente nós mesmos hoje.
