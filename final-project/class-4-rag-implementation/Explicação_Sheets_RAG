@@ -1,0 +1,3 @@
+Atualmente não estamos usando RAG por conta dos dados que utilizamos para alimentar nosso agente são Título, ações, FII’s que tem preços e questões voláteis. Logo, não faz sentido jogar isso para uma RAG.
+
+Usamos o sheets pois permite a atualização dos preços e de suas variáveis para alimentar nosso Agente.
