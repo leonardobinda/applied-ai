@@ -1,0 +1,12 @@
+Prompt Final (Melhorado)
+
+O novo prompt conduz o cliente de forma muito mais satisfatória até o final do seu ciclo de atendimento.
+Ele oferece uma experiência natural e consultiva, com etapas bem definidas e adaptadas ao comportamento do cliente.
+Consegue identificar com maior precisão os perfis ideais a partir da conversa, evita pulverização excessiva e entrega carteiras claras, personalizadas e com ativos específicos — tudo de forma simples e didática.
+Além disso, inclui lógica para registrar os dados silenciosamente e gerar gráficos visuais, permitindo automações no n8n sem comprometer a experiência do cliente.
+
+Prompt Anterior
+
+O prompt anterior cumpria seu papel de atendimento básico, mas apresentava lacunas importantes.
+Tinha dificuldades em identificar corretamente os perfis do cliente, usava perguntas engessadas e não conseguia montar carteiras no formato desejado (com poucos ativos específicos, claros e equilibrados).
+Também não havia instruções claras para salvar outputs ou gerar materiais visuais de apoio.
