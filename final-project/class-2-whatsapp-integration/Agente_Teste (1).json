@@ -1,0 +1,3315 @@
+{
+  "name": "Agente Teste",
+  "nodes": [
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3480,
+        1520
+      ],
+      "id": "dbb71df5-0bf5-4275-a2fd-a2330e827a42",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "I6fH0WdEFKLYRtUM",
+          "name": "OpenAi account 6"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1413462587,
+          "mode": "list",
+          "cachedResultName": "Base de Contatos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=1413462587"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [
+        3680,
+        1520
+      ],
+      "id": "e603a401-1e2a-4b97-b4a0-ee54ee9370fc",
+      "name": "Base de Contatos2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://gate.whapi.cloud/messages/text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $('Message').item.json.body.messages[0].from }}"
+            },
+            {
+              "name": "body",
+              "value": "={{ $json.output }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        4500,
+        920
+      ],
+      "id": "e690ceed-9edf-4197-a615-53e766f6ce50",
+      "name": "HTTP Request3",
+      "alwaysOutputData": false,
+      "executeOnce": true,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "MiyXsxZJvTcHPalz",
+          "name": "Header Auth account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Número": "={{ $json['Número'] }}",
+            "Status": "Sem Carteira"
+          },
+          "matchingColumns": [
+            "Número"
+          ],
+          "schema": [
+            {
+              "id": "Número",
+              "displayName": "Número",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Perfil ",
+              "displayName": "Perfil ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Carteira",
+              "displayName": "Carteira",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "Resumo da Conversa",
+              "displayName": "Resumo da Conversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        3180,
+        500
+      ],
+      "id": "55cf2b33-28d6-4ffc-ad65-5b39b1319ccf",
+      "name": "Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "pineconeIndex": {
+          "__rl": true,
+          "mode": "list",
+          "value": ""
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.1,
+      "position": [
+        4440,
+        1260
+      ],
+      "id": "ff744223-f0dd-4ded-be05-6ac948781031",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "1bkCfmBfDjs2q4MF",
+          "name": "PineconeApi grupoaegon"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        4460,
+        1400
+      ],
+      "id": "b04fa52f-4443-4a63-b1ed-e6e4e0cfd44c",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=O seu papel é sumarizar a conversa e gerar um output.  \n\n-user: {{ $('Message').item.json.body.messages[0].text.body }}\n-assistent: {{ $('Agente Base').item.json.output }}\n-resume: {{ $('New user ?').item.json['Resumo da Conversa'] }}"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        5140,
+        560
+      ],
+      "id": "4624d996-0bf6-4138-a7b8-3e823ec7db49",
+      "name": "sumarizador",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=-Identifique no resumo da conversa se o interesse tem interesse na aquisição do serviço \n-Caso ele peça para marcar uma reunião direto, já qualifica-lo \nresumo: {{ $json['Resumo da Conversa'] }}\n-use a sua tool para idêntificar entre 2 e 3 perfis que mais batem com o perfil do cleinte. \nO único output que você pode ter é apenas falar o perfil.\n-Caso o perfil não tenha sido identificado com certeza, resposda apenas \"NÃO\"\n-Caso tenha identificado o perfil, responda: perfil x e perfil y \n\n"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        6320,
+        540
+      ],
+      "id": "066e0ea7-782f-4970-a0dd-a8d016dbd1b8",
+      "name": "classificador",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5b83f59e-2f04-42b5-9ca4-66a18bf9506c",
+              "leftValue": "={{ $('New user ?').item.json.Status }}",
+              "rightValue": "Sem Carteira",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        6020,
+        560
+      ],
+      "id": "6829f33e-0e16-43a9-8bcd-d6596f4f243b",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Número",
+              "lookupValue": "={{ $('Message').item.json.body.messages[0].from }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        5720,
+        560
+      ],
+      "id": "fcbca1d9-75e4-4f14-b57c-1d40d51bcef3",
+      "name": "Google Sheets4",
+      "executeOnce": false,
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Número": "={{ $('Message').item.json.body.messages[0].from }}",
+            "Resumo da Conversa": "={{ $json.message.content }}"
+          },
+          "matchingColumns": [
+            "Número"
+          ],
+          "schema": [
+            {
+              "id": "Número",
+              "displayName": "Número",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Perfil ",
+              "displayName": "Perfil ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Carteira",
+              "displayName": "Carteira",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Resumo da Conversa",
+              "displayName": "Resumo da Conversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        5560,
+        560
+      ],
+      "id": "cf50acea-25fe-475b-acb5-8744d920cfb7",
+      "name": "Google Sheets6",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Número": "={{ $('New user ?').item.json['Número'] }}",
+            "Perfil ": "={{ $json.message.content }}"
+          },
+          "matchingColumns": [
+            "Número"
+          ],
+          "schema": [
+            {
+              "id": "Número",
+              "displayName": "Número",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Perfil ",
+              "displayName": "Perfil ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Carteira",
+              "displayName": "Carteira",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Resumo da Conversa",
+              "displayName": "Resumo da Conversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        6940,
+        540
+      ],
+      "id": "2cd98d98-6b63-443a-b180-6c17ef02a488",
+      "name": "Google Sheets9",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.content }}",
+                    "rightValue": "NÃO",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "a28203d7-6f2e-43f4-81d1-2611c9da0bdb"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "20af1ef2-ceab-4542-9da8-7c68ae40dc38",
+                    "leftValue": "={{ $json.message.content }}",
+                    "rightValue": "P",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        6680,
+        540
+      ],
+      "id": "8f52be83-6049-4d61-a68a-344014311015",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.body.messages[0].text.body }}",
+        "options": {
+          "systemMessage": "=Você é Paulo, especialista financeiro da gestora Equity.\nSeu papel é conduzir todo o atendimento com o cliente via WhatsApp, desde o primeiro contato até a entrega e acompanhamento da carteira de investimentos personalizada.\n\nDADOS DO CLIENTE:\nNome: {{ $('Message').item.json.body.messages[0].from_name }}\nNúmero: {{ $('Message').item.json.body.messages[0].from }}\n\nCOMPORTAMENTO E TOM:\n-Paulo é um consultor humano da Equity, nunca fale como assistente virtual ou robô\n-Use linguagem consultiva, natural e adaptada ao nível de conhecimento do cliente\n-Seja direto, claro e prático nas respostas\n-NÃO use emojis durante a conversa normal (EXCETO na apresentação final da carteira)\n-Mantenha mensagens curtas e objetivas, exceto quando o cliente solicitar detalhes\n-Se o cliente não quiser ajuda no momento, responda:\n\"Tranquilo! Qualquer coisa que você precisar, é só me chamar por aqui. Tô sempre à disposição!\"\n\nATENDIMENTO INICIAL:\nMensagem de abertura:\n\"Fala, {{ $('Message').item.json.body.messages[0].from_name }}! Tudo certo? Aqui é o Paulo, da gestora Equity. Estou por aqui pra te ajudar com o que você precisar sobre investimentos. Como posso te ajudar hoje?\"\n\n\"Use o histórico de conversas para entender o contexto atual. Se o cliente já fez perguntas ou interações anteriores, use essas informações para fornecer respostas mais personalizadas. Se o cliente já demonstrou interesse em algum tema específico, como investimentos ou revisão de carteira, use isso para guiar a conversa. Se o histórico indicar que o cliente tem dúvidas não resolvidas ou que começou uma tarefa mas não concluiu, retome esse ponto e ofereça ajuda. Caso o histórico não forneça contexto claro, inicie uma nova interação e pergunte ao cliente o que ele gostaria de discutir.\"\n\nQUESTIONÁRIO DE PERFIL DO INVESTIDOR:\nAbordagem:\n\n-Conduza como um bate-papo natural, não um formulário rígido\n-Faça apenas UMA pergunta por vez e aguarde a resposta\n-Se receber resposta vaga, peça mais detalhes específicos\n-Adapte as próximas perguntas com base nas respostas anteriores\n-Confirme o valor total disponível para investir (crucial para recomendações adequadas)\n\nMensagem inicial do questionário:\n\"Boa! Agora quero te conhecer melhor pra entender o que faz mais sentido pra você nos investimentos. Me conta uma coisa...\"\n\nTemas a serem cobertos (não necessariamente nesta ordem):\n-Objetivo principal com os investimentos (aposentadoria, compra, reserva, etc.)\n-Prazo estimado para alcançar esse objetivo\n-Tolerância ao risco (alta, média, baixa)\n-Valor mensal disponível para investir regularmente\n-Montante inicial total disponível para investir agora\n-Experiência anterior com investimentos (iniciante, intermediário, avançado)\n-Preferência por ativos nacionais ou internacionais\n-Expectativas realistas de retorno anual\n-Situação do fundo de emergência (tem? quanto?)\n-Existência de dívidas que devem ser priorizadas\n-Conforto com volatilidade (oscilações de valor)\n-Preferência por liquidez ou investimentos de longo prazo\n-Setores ou tipos de ativos que deseja evitar por razões pessoais\n\n-Se o cliente em uma única resposta der ou passar por dois ou mais tópicos ( e a resposta for conclusiva ) pode pulá-lo \n\nCLASSIFICAÇÃO DE PERFIL DO INVESTIDOR\nImportante:\n\nPara cada cliente, identifique 2-3 perfis que melhor se encaixem em suas características\nCrie uma carteira personalizada que combine elementos dos perfis identificados\nNÃO use carteiras pré-definidas – cada recomendação deve ser única e customizada\n\nPerfis disponíveis para classificação:\nUltraconservador:\nInveste exclusivamente em produtos garantidos, como poupança e Tesouro Selic\n\nReserva de Emergência:\nFoco total em liquidez imediata (ex.: CDB 100% CDI, Tesouro Selic)\n\nCauteloso Dinâmico:\nAlocação de 90% em renda fixa tradicional e 10% em fundos conservadores de baixo risco\n\nAposentadoria Planejada:\nPrioriza previdência privada e títulos indexados à inflação (Tesouro IPCA+)\n\nDividendista - Risco:\nBusca gerar renda passiva com ações e FIIs que pagam dividendos estáveis\nPerfil voltado para públicos com maior apetite a risco\n\nDividendista Clássico:\nBusca gerar renda passiva com ações e FIIs que pagam dividendos estáveis\nPerfil voltado para públicos com menor apetite a risco\n\nRenda Fixa Previsível:\nPrefere títulos de longo prazo (CDB, LCI/LCA) com rentabilidade fixa\n\nImobiliário Passivo:\nInveste em FIIs para obter renda regular por meio de aluguéis\nPrioriza fundos com imóveis físicos que gerem receita recorrente estável\n\nEquilibrado Tradicional:\nCombina 50% em renda fixa com 50% em renda variável (ações blue chips, ETFs)\n\nGlobalizador Moderado:\nDiversifica com investimentos internacionais, como ETFs globais e ações nos EUA\n\nDividendista Estratégico:\nFoca em empresas sólidas com histórico consistente de crescimento de dividendos\n\nPerfil Integrado:\nInveste com diversificação máxima entre diferentes estratégias\nCombina segurança, geração de renda, crescimento do patrimônio\nAproveita oportunidades, permite especulação moderada e proteção contra crises\n\nPerfil Dolarizado:\nFoco principal na proteção patrimonial através da dolarização do patrimônio\nIdeal para investidores que buscam proteção contra desvalorização cambial e exposição global estável\n\nContrarian Tático:\nInveste em ativos subvalorizados (ações, FIIs) aproveitando crises e oportunidades pontuais\n\nSetorialista:\nConcentra investimentos em setores específicos (tecnologia, energia renovável, saúde)\n\nArrojado em Valor:\nFocado em identificar e investir em empresas consolidadas temporariamente subvalorizadas pelo mercado\nAposta em forte recuperação futura com crescimento sólido\n\nVisionário Tech:\nInveste em inovação tecnológica, com apostas em startups e ações de alto crescimento\n\nCripto Adaptativo:\nAloca parte do patrimônio em criptomoedas e tokens, visando alta valorização\n\nTrader Ativo:\nOpera no curto prazo (day trade, swing trade) para aproveitar a volatilidade do mercado\n\nFerramenta de apoio:\nUse a ferramenta \"Perfis-RAG\" do Google Sheets para confirmação das classificações. Esta ferramenta analisa as respostas do cliente e ajuda a confirmar o perfil identificado manualmente.\n\nRecebimento de carteira ( foto ): \n\"Analisando a imagem da carteira de investimentos fornecida, identifique e descreva as categorias de investimentos visíveis (como Renda Variável, Renda Fixa, Conta Investimento, etc.) e forneça os valores totais de cada uma delas. Além disso, calcule a porcentagem que cada categoria representa na carteira.\n\nEm seguida, com base no histórico de conversas com o cliente (se disponível), utilize as informações passadas para personalizar a resposta. Se o cliente tiver demonstrado interesse em revisar sua carteira ou ajustar seus investimentos, mencione essas preferências no início da resposta. Caso contrário, pergunte ao cliente como você pode ajudá-lo mais, fazendo referência ao que foi discutido anteriormente.\"\n\nExemplo de resposta:\n\"Oi, {{ $('Message').item.json.body.messages[0].from_name }}! Vi aqui que a maior parte da sua carteira, 84,64%, está em Renda Variável, somando R$ 3.115,61. O que acha de dar uma olhada nisso ou fazer algum ajuste? Se precisar de ajuda com outra coisa, estou à disposição! E se quiser, posso também revisar nosso histórico de conversas para te ajudar no que precisar.\"\n\nCRIAÇÃO DE CARTEIRA PERSONALIZADA\nDiretrizes para criar carteiras personalizadas:\n-Analise cuidadosamente os 2-3 perfis identificados para o cliente\n-Considere o valor disponível para investimento\n-Selecione no máximo 3 ativos específicos que se complementem\n-Distribua os percentuais de forma equilibrada baseada nos perfis do cliente\n-A carteira final deve ser única e sob medida para cada cliente\n-Informe quanto deve ser posto em cada ativo específico \n\nENTREGA DA CARTEIRA:\nPassos para apresentação:\n-Explique por que a carteira sugerida faz sentido para esses perfis\n-Apresente a alocação sugerida (máximo 3 ativos específicos)\n-Use os emojis definidos para categorias na apresentação visual\n\nEmojis para categorias de ativos:\n💵 Renda Fixa\n📈 Ações\n🏠 FIIs\n🌎 Internacionais\n🪙 Cripto\n\nPROCEDIMENTOS APÓS APROVAÇÃO:\nSe o cliente aprovar:\n\nGere os seguintes dados no JSON de saída (sem mencionar que está salvando):\n\noutput.perfilIdentificado → resumo dos perfis identificados\noutput.carteiraFinal → carteira final apresentada ao cliente\n\n\nResponda:\n\"Beleza, {{ $('Message').item.json.body.messages[0].from_name }}! Sua carteira foi salva aqui com a gente. Qualquer ajuste é só me avisar.\"\nGere e envie o gráfico da alocação com QuickChart.io\n\nSe o cliente NÃO aprovar:\n\nNão salve nada no JSON\nAjuste a carteira conforme solicitado pelo cliente\nProceda com o salvamento apenas após aprovação final\n\nINSTRUÇÕES INTERNAS:\n-Nunca informe ao cliente que os dados estão sendo salvos\n-Priorize carteiras com no máximo 3 ativos específicos\n-O valor total disponível é crucial para recomendações adequadas\nFaça apenas uma pergunta por vez\n-Se o cliente demonstrar conhecimento técnico avançado, pode aprofundar mais nas explicações\n-Se o cliente estiver indeciso, ofereça comparações diretas entre alternativas\n-Se o cliente sair do escopo do atendimento (ex: pedir empréstimos), gentilmente redirecione para os serviços oferecidos\n-Quando for sugerir a carteira, se a carteira tiver fundos ou renda fixa você dever usar sua Tool de Renda Fixa e Fundos\n-Você entende audio e imagens\n\nO que você fará internamente: \n-Após identificar o perfil do cliente, você deve atualizar o perfil dele  e a carteira aprovada por ele usando sua Tool ( Update )\n\nCHECKLIST DE VERIFICAÇÃO FINAL:\n -Objetivo e prazo claramente identificados\n -2 a 3 perfis de investidor captados\n -Valor total disponível para investimento conhecido\n -Máximo de 3 ativos específicos na carteira final\n -Carteira personalizada criada (não usar modelos pré-definidos)\n -Carteira aprovada pelo cliente\n -Dados salvos no JSON de saída (após aprovação)\n -Gráfico de alocação enviado\n\nDados que você vai salvar na planilha: \n-Perfil identificado \n-Carteira aprovada pelo o cliente / alterada\n\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        4020,
+        920
+      ],
+      "id": "e25646d9-e9c8-4742-a799-2ea1bc37a5a7",
+      "name": "Agente Base"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        3980,
+        1500
+      ],
+      "id": "c48c5e26-8119-475f-8eee-37d5e5bcca2c",
+      "name": "Perplexity",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=A sua função é observar o resumo da conversa e separar a carteira quando o cliente a aprovar\n\n-user: {{ $('Message').item.json.body.messages[0].text.body }}\n-assistent: {{ $json.output }}\n-resume: {{ $('New user ?').item.json['Resumo da Conversa'] }}\n\nVocê terá apenas 2 outputs ( caso você note que o cliente aprovou a carteira )\n1º output: carteira aprovada\n2º outou: aqui será o texto da carteira"
+            }
+          ]
+        },
+        "options": {
+          "temperature": 0
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        4860,
+        1000
+      ],
+      "id": "10571069-1004-42dc-8815-69c0867aea00",
+      "name": "Separador",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "df2e3590-6609-45c5-a05c-cd78e6859345",
+              "leftValue": "={{ $json.message.content }}",
+              "rightValue": "Carteira Aprovada",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5180,
+        900
+      ],
+      "id": "80ce53cb-d2bf-4316-8b18-8854de0e32f4",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "df2e3590-6609-45c5-a05c-cd78e6859345",
+              "leftValue": "={{ $json.message.content }}",
+              "rightValue": "Perfil",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        5180,
+        1100
+      ],
+      "id": "d318ad0c-d006-42e6-9f7b-49dcc5d3d12f",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6643dbd4-d20b-4807-ad76-16b8b6a170bb",
+              "leftValue": "={{ $json.body.messages[0].from_me }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "false",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1300,
+        920
+      ],
+      "id": "59d1b535-b946-4bc0-87b1-af660cfdf7f5",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {
+          "includeBinaries": true,
+          "keepOnlyUnique": false
+        }
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3400,
+        920
+      ],
+      "id": "97f51cb5-7048-40b4-8e97-e1f70e52ee9f",
+      "name": "Aggregate Data from Switch1",
+      "alwaysOutputData": true,
+      "executeOnce": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Message').item.json.body.messages[0].image.link }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1880,
+        920
+      ],
+      "id": "43c328c9-a296-4cda-a413-8a830c9c67c5",
+      "name": "HTTP Download File Image1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6867713d-4ead-4338-8bc1-64efb308f8e1",
+              "leftValue": "={{ $json['Número'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2600,
+        700
+      ],
+      "id": "69e1aac0-2d09-48fd-828d-624709a82c2a",
+      "name": "New user ?"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "Número",
+              "lookupValue": "={{ $('Message').item.json.body.messages[0].from }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1880,
+        700
+      ],
+      "id": "0e868b1c-aea7-4317-bfd1-859820565dc7",
+      "name": "Contact sheet",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "Webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -500,
+        920
+      ],
+      "id": "c5d49739-5e62-4c2b-829d-399f723768d1",
+      "name": "Message",
+      "webhookId": "d2f83c59-c658-494e-85b7-540dd67e7c80"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        5340,
+        900
+      ],
+      "id": "7b848be0-34ac-4223-9efb-0d0d51fd075e",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "Número"
+          ],
+          "schema": [
+            {
+              "id": "Número",
+              "displayName": "Número",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Perfil ",
+              "displayName": "Perfil ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Carteira",
+              "displayName": "Carteira",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Resumo da Conversa",
+              "displayName": "Resumo da Conversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        5660,
+        900
+      ],
+      "id": "f4b3941a-cd2e-4ac8-9e9c-fe64859eef2f",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "Número"
+          ],
+          "schema": [
+            {
+              "id": "Número",
+              "displayName": "Número",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Perfil ",
+              "displayName": "Perfil ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Carteira",
+              "displayName": "Carteira",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Resumo da Conversa",
+              "displayName": "Resumo da Conversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        5660,
+        1100
+      ],
+      "id": "ad5cc079-fa9f-4148-b9fb-596078e8128b",
+      "name": "Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {}
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        5340,
+        1100
+      ],
+      "id": "341483c3-6ccd-4ecb-97b0-449ce66c6d25",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Página5",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Número": "={{ $('Message').item.json.body.messages[0].from }}",
+            "Nome": "={{ $('Message').item.json.body.messages[0].from_name }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Número",
+              "displayName": "Número",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Perfil ",
+              "displayName": "Perfil ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Carteira",
+              "displayName": "Carteira",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Resumo da Conversa",
+              "displayName": "Resumo da Conversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2880,
+        500
+      ],
+      "id": "2d023a12-26e9-44b3-a70c-c03f8cbf7492",
+      "name": "add new contact",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://gate.whapi.cloud/messages/{{ $('Message').item.json.body.messages[0].id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer 0KnvzVMGloicu04emfLHpxkXZ2KyUcSQ"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        940,
+        920
+      ],
+      "id": "4b53f377-c2ce-4457-98ad-404b585d6b70",
+      "name": "Whapi Read Message",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://gate.whapi.cloud/presences/{{ $('Message').item.json.body.messages[0].chat_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer 0KnvzVMGloicu04emfLHpxkXZ2KyUcSQ"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"presence\": \"typing\",\n  \"delay\": 0\n}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1080,
+        920
+      ],
+      "id": "a93d29aa-7d5f-4b41-8fb3-48481b0cffbe",
+      "name": "Whapi Typing Presence",
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        1300,
+        3720
+      ],
+      "id": "67d5ced3-892e-4818-9fc6-cf15f2082d72",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "returnAll": true,
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1XNyztnUt-EylR3DDQhBg9U7T9PxwdyiL",
+            "mode": "list",
+            "cachedResultName": "Mariah - RAG",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1XNyztnUt-EylR3DDQhBg9U7T9PxwdyiL"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1500,
+        3720
+      ],
+      "id": "1a812398-85e6-49ef-acb6-2d7ee8b59594",
+      "name": "Google Drive",
+      "alwaysOutputData": false,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "cSx4aoAaHQRqlkmw",
+          "name": "Diogo@Scaleup"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2080,
+        3720
+      ],
+      "id": "7e72b9bd-4476-4020-9f5f-0c0edb957471",
+      "name": "Get Content",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "cSx4aoAaHQRqlkmw",
+          "name": "Diogo@Scaleup"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "dataType": "binary",
+        "options": {
+          "metadata": {
+            "metadataValues": [
+              {
+                "name": "data",
+                "value": "={{ $json.name }}"
+              }
+            ]
+          }
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+      "typeVersion": 1,
+      "position": [
+        2340,
+        4040
+      ],
+      "id": "0238d0de-483b-4df7-b33a-717985a2f2fc",
+      "name": "Default Data Loader"
+    },
+    {
+      "parameters": {
+        "chunkOverlap": 200,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+      "typeVersion": 1,
+      "position": [
+        2340,
+        4280
+      ],
+      "id": "b75c1bc8-4ff3-4cf1-b3cf-17b98a72d700",
+      "name": "Recursive Character Text Splitter"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1920,
+        3740
+      ],
+      "id": "2de49838-73bb-4e5e-9493-75220efc0acc",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "mode": "insert",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "media-content",
+          "mode": "list",
+          "cachedResultName": "media-content"
+        },
+        "options": {
+          "clearNamespace": false,
+          "pineconeNamespace": "mariah"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.1,
+      "position": [
+        2300,
+        3720
+      ],
+      "id": "63da96e8-8c47-4d77-a644-23a57fab9cc4",
+      "name": "Pinecone Vector Store1",
+      "credentials": {
+        "pineconeApi": {
+          "id": "YqKEkQHMWwTJ46KN",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {
+          "encoding": "base64"
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1800,
+        3600
+      ],
+      "id": "1fe698a8-1c69-4141-ba3f-9a458a48f402",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "content": "## RAG\n",
+        "height": 80,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        3740
+      ],
+      "id": "98fe7b94-6fa4-4586-956f-8a2d34cb6794",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2160,
+        4040
+      ],
+      "id": "287c1b07-8c0d-4dfd-8b37-408878d818fb",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "368ca3e2-934c-469c-828f-ba6fc6a604c8",
+              "leftValue": "={{ $json.name.endwith.pdf }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1640,
+        3720
+      ],
+      "id": "36a8fc69-91b9-4967-84e6-cedb5223ada3",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "sendTo": "diogochiapeta26@gmail.com",
+        "subject": "Novo Contato",
+        "emailType": "text",
+        "message": "Acabou de chegar um novo cliente",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        3180,
+        340
+      ],
+      "id": "ff0a160e-e788-472e-9f32-a065eb3c0c42",
+      "name": "notify new lead",
+      "webhookId": "c965f5f5-4743-4045-b4a3-fa4ecb077da5",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "yZEokdWsjurttUeq",
+          "name": "Gmail account (flow@agently.com.br)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "text": "\"Analise a imagem de uma carteira de investimentos e forneça uma descrição detalhada dos seguintes pontos:\n\n1. **Categorias de Investimentos**: Liste as diferentes categorias de investimentos presentes (por exemplo, Renda Variável, Renda Fixa, Conta Investimento, Valores em Trânsito).\n2. **Distribuição Percentual**: Para cada categoria, informe o percentual correspondente.\n3. **Valores**: Informe os valores totais de cada categoria de investimento.\n4. **Desempenho Passado**: Se disponível, forneça o aumento (em reais e percentual) nos últimos 12 meses de cada categoria de investimento.\n5. **Observações Gerais**: Forneça uma análise sobre a distribuição dos investimentos e o perfil do investidor com base nos dados fornecidos (por exemplo, maior concentração em Renda Variável, menor em Renda Fixa, etc.).\"\n\nUse essas informações para gerar uma análise completa e detalhada sobre a carteira de investimentos, considerando tanto os valores quanto a distribuição percentual.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        2600,
+        920
+      ],
+      "id": "76728743-3831-49db-9375-b432b94e0d14",
+      "name": "OpenAI2",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "messages",
+        "key": "={{ $('normalização').item.json.message.chat_id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        60,
+        920
+      ],
+      "id": "b17eb83b-a699-41fd-bb17-89913b288e73",
+      "name": "Get messages buffer",
+      "executeOnce": false,
+      "credentials": {
+        "redis": {
+          "id": "lHYAv9RObXXzfXj5",
+          "name": "Redis account - default"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{ $json.message.chat_id }}",
+        "messageData": "={{ JSON.stringify($json.message) }}",
+        "tail": true
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        920
+      ],
+      "id": "be8883c4-3d57-4c8e-8bcf-fa6fa1f92d8d",
+      "name": "Push messager Buffer",
+      "credentials": {
+        "redis": {
+          "id": "lHYAv9RObXXzfXj5",
+          "name": "Redis account - default"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ JSON.parse($json.messages.first()).message_id }}",
+                    "rightValue": "={{ $('normalização').item.json.message.message_id }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    },
+                    "id": "93037ac5-0cf0-44f4-b640-e02aefb2d182"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "nada a fazer "
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c9b145d4-9ce4-4508-a2ac-07d53283f615",
+                    "leftValue": "=",
+                    "rightValue": "=1",
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "prosseguir"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "Esperar"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        360,
+        920
+      ],
+      "id": "a96aef3a-0bf3-48dd-bbde-494d3f2ed6cc",
+      "name": "Switch2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1jkWU57d8YVTrcrMMZRTZsILGFGoFrNyWujnoeRezeA4",
+          "mode": "list",
+          "cachedResultName": "Fundos",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jkWU57d8YVTrcrMMZRTZsILGFGoFrNyWujnoeRezeA4/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jkWU57d8YVTrcrMMZRTZsILGFGoFrNyWujnoeRezeA4/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [
+        3680,
+        1760
+      ],
+      "id": "1f5cac00-d6c3-4e56-8162-e2f250ed972e",
+      "name": "Fundos",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "19QH8pSw5Vqfx9hbckDOOSQVOecP4fr9C67_v1HavEPs",
+          "mode": "list",
+          "cachedResultName": "Renda Fixa",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19QH8pSw5Vqfx9hbckDOOSQVOecP4fr9C67_v1HavEPs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Página1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/19QH8pSw5Vqfx9hbckDOOSQVOecP4fr9C67_v1HavEPs/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [
+        3680,
+        1640
+      ],
+      "id": "84c46c33-e54e-4cbb-8b16-98c10665f4bd",
+      "name": "Renda Fixa",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "30f90ea3-2df4-41d7-9bc8-086f1c692beb",
+                    "leftValue": "={{ $('Message').item.json.body.messages[0].type }}\n",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "texto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Message').item.json.body.messages[0].type }}",
+                    "rightValue": "image",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "b6271ca2-c75b-4854-95fd-3a8bb4e6e181"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "foto"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1a099874-5e6e-473e-8de4-3ce4e8fbad10",
+                    "leftValue": "={{ $('Message').item.json.body.messages[0].type }}",
+                    "rightValue": "voice",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "voz"
+            }
+          ]
+        },
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1520,
+        920
+      ],
+      "id": "b7cf077f-e5ce-4d17-b129-c8e95ad5e3e6",
+      "name": "Select Message Type2",
+      "executeOnce": true,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {
+          "language": "pt"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        2220,
+        1160
+      ],
+      "id": "eebd26c4-ee5a-4808-883b-4cbf5d49b2a2",
+      "name": "OpenAI Transcribe Audio File1",
+      "credentials": {
+        "openAiApi": {
+          "id": "W5yy5siihMaWOgaB",
+          "name": "Smart Player"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0fc0c719-c4b5-48c3-ad7e-ace02ca2c54b",
+              "name": "body.messages.0.text.body",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "98679220-4da4-4c8b-8884-471b49330cdc",
+              "name": "body.audio_improve",
+              "value": "=- Mantenha respostas curtas, limitando-se a aproximadamente 60-75 palavras para gerar áudios de até 20 segundos.  \n- Certifique-se de que **todos os números e medidas sejam escritos por extenso**. Por exemplo, em vez de \"5 km\", use \"cinco quilômetros\"         \n- Evite abreviações, siglas ou símbolos; escreva tudo por extenso         \n- Use frases curtas e diretas, com pontuação clara         \n- Mantenha um tom natural e conversacional         \n- Remova todos caracteres especiais como '*' e '-'         \n- Priorize as informações mais importantes no início da resposta         \n- Evite repetições e redundâncias        - Use linguagem simples e direta         - Otimize o texto para gerar áudio com qualidade e de forma natural",
+              "type": "string"
+            },
+            {
+              "id": "817ab292-d4ff-4bad-9a16-34cc48553c1c",
+              "name": "body.messages.0.type",
+              "value": "voice",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2600,
+        1160
+      ],
+      "id": "eb08be8e-972d-42cc-8763-52a0d3e48fec",
+      "name": "Edit Normalize Transcribed Data1",
+      "executeOnce": true,
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Message').item.json.body.messages[0].voice.link }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1880,
+        1160
+      ],
+      "id": "663a39e7-e7bc-43ff-b11c-d39257686533",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "584deeb1-c83b-4da4-9db4-ebe5745ecb89",
+              "name": "=userPrompt",
+              "value": "={{ $json.data[0].body.messages[0].text.body }}",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3680,
+        920
+      ],
+      "id": "bf30efc1-1c81-4ad2-9dd0-236a7018b37c",
+      "name": "Normalize Prompt Data4"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI",
+          "mode": "list",
+          "cachedResultName": "Agente Financeiro",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 309777738,
+          "mode": "list",
+          "cachedResultName": "Base Geral",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1qE3fjKzfi-IVrisvAKiL-314Uny_NZeKCrqK9njVQnI/edit#gid=309777738"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Número": "={{ $('Message').item.json.body.messages[0].from }}",
+            "Nome": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nome', ``, 'string') }}",
+            "Status": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Status', ``, 'string') }}",
+            "Perfil ": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Perfil_', ``, 'string') }}",
+            "Carteira": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Carteira', ``, 'string') }}",
+            "Resumo da Conversa": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Resumo_da_Conversa', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "Número"
+          ],
+          "schema": [
+            {
+              "id": "Número",
+              "displayName": "Número",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nome",
+              "displayName": "Nome",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Perfil ",
+              "displayName": "Perfil ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Carteira",
+              "displayName": "Carteira",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Resumo da Conversa",
+              "displayName": "Resumo da Conversa",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.5,
+      "position": [
+        4100,
+        1500
+      ],
+      "id": "cd005899-fdc6-4f5d-b052-daa4d2e67b33",
+      "name": "Update",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JcWwuDasTEOk0hNr",
+          "name": "Diogo@Teste"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        580,
+        760
+      ],
+      "id": "c953a42f-c27a-4b16-b516-06fe5620a113",
+      "name": "No Operation, do nothing",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        580,
+        1060
+      ],
+      "id": "225e57eb-628a-4976-8eb5-a3a6ee1302d7",
+      "name": "Wait",
+      "webhookId": "725c035c-2e68-44dd-b11b-c2bc9923c7e1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\"message\":{\n  \"message\": \"{{ $json.body.messages[0].text.body }}\",\n  \"message_id\": \"{{ $json['body'].messages[0].id }}\",\n  \"chat_id\": \"{{ $json['body'].messages[0].chat_id }}\",\n  \"content_type\": \"{{ $json['body'].messages[0].type }}\",\n  \"timestamp\": \"{{ $json['body'].messages[0].timestamp }}\",\n  \"from_name\": \"{{ $json['body'].messages[0].from_name }}\"\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -300,
+        920
+      ],
+      "id": "1660e49e-fa36-4bd2-b435-b3dbc0df2af9",
+      "name": "normalização",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "retryOnFail": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4afa75ce-2927-44ed-a147-19886e98fb37",
+              "name": "messages",
+              "value": "={{ $json.messages.map(value => JSON.parse(value).content).join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        740,
+        920
+      ],
+      "id": "ca7e8e33-f9de-4870-bed6-9fd46634bb96",
+      "name": "messages",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('normalização').item.json.message.chat_id }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        580,
+        920
+      ],
+      "id": "8736c92d-8d2b-4ecf-8d98-66ef5039bbf5",
+      "name": "Delete Buffer",
+      "credentials": {
+        "redis": {
+          "id": "lHYAv9RObXXzfXj5",
+          "name": "Redis account - default"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Buffer",
+        "height": 520,
+        "width": 1200,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        740
+      ],
+      "id": "af850061-527c-4050-8c40-6181431885c4",
+      "name": "Sticky Note",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Typing / Visto",
+        "height": 200,
+        "width": 280
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        920,
+        860
+      ],
+      "id": "16291212-4007-4828-9df0-f898f5323a5b",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## Agente",
+        "height": 80,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -640,
+        940
+      ],
+      "id": "7739ed54-3f4c-45b6-b76e-a9771d326df6",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "jsCode": "const agora = new Date();\nconst menos10 = new Date(agora.getTime() - 10 * 1000);\nconst timestampBruto = 1744238421;\nconst dataConvertida = new Date(timestampBruto * 1000);\n\nreturn [\n  {\n    json: {\n      msgTimestamp: timestampBruto,\n      convertida: dataConvertida.toISOString(),\n      agora: agora.toISOString(),\n      menos10: menos10.toISOString(),\n      isAfter: dataConvertida > menos10\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        920
+      ],
+      "id": "4ace3548-8d19-4749-a29d-3066bb46b6ad",
+      "name": "Code",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.elevenlabs.io/v1/text-to-speech/CZD4BJ803C6T0alQxsR7",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"{{ $('Normalize Answer').item.json.output.replaceAll('\\n', '').replaceAll('\\'', '') }}\",\n  \"model_id\": \"eleven_flash_v2_5\",\n  \"voice_settings\": {\n   \"stability\": {{ $json.stability }},\n    \"similarity_boost\": {{ $json.similarity }},\n    \"style\": {{ $json.style }},\n    \"speed\": {{ $json.speed }},\n    \"use_speaker_boost\": true\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        4020
+      ],
+      "id": "1e5ff997-4c7c-45c0-9b37-7e6be6eeb470",
+      "name": "Eleven Labs Text to Speech",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "q24DZau6ppJCSus6",
+          "name": "SCALEUP_ELEVENLABS"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "3813e0d3-5bec-4ac7-b1dd-265bc7815a2f",
+              "leftValue": "={{ $('Webhook').first().json.body.messages[0].type }}",
+              "rightValue": "voice",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {
+          "ignoreCase": true
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        40,
+        4020
+      ],
+      "id": "1219d68b-86e7-4786-a48a-56914b2c34e7",
+      "name": "If Response Type"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "abb00b32-564e-4da1-9329-cc8bb0f317a9",
+              "name": "voiceId",
+              "value": "={{ $('GET_CHAT_DATA_SCALEUP').item.json.voice.externalId }}",
+              "type": "string"
+            },
+            {
+              "id": "1d98d4fd-2afa-43a8-bc9c-3b5f2f8ab4bd",
+              "name": "similarity",
+              "value": "={{ !$('GET_CHAT_DATA_SCALEUP').item.json.voice.similatiry?1: $('GET_CHAT_DATA_SCALEUP').item.json.voice?.similatiry}}",
+              "type": "string"
+            },
+            {
+              "id": "aaf1f2c6-606e-48a1-8050-4b09ed37ab29",
+              "name": "stability",
+              "value": "={{ !$('GET_CHAT_DATA_SCALEUP').item.json.voice.similatiry?0.7: $('GET_CHAT_DATA_SCALEUP').item.json.voice?.stability}}",
+              "type": "string"
+            },
+            {
+              "id": "ef95de04-f596-4b9e-bc43-4582c1a4fc16",
+              "name": "style",
+              "value": "={{ !$('GET_CHAT_DATA_SCALEUP').item.json.voice.style?0.1: $('GET_CHAT_DATA_SCALEUP').item.json.voice?.style}}",
+              "type": "string"
+            },
+            {
+              "id": "a3e36dab-cbae-466a-9b83-9fe4ecf6205f",
+              "name": "speed",
+              "value": "={{ !$('GET_CHAT_DATA_SCALEUP').item.json.voice.speed?1.05: $('GET_CHAT_DATA_SCALEUP').item.json.voice?.speed}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        260,
+        4020
+      ],
+      "id": "d9583e46-5373-497f-8ebf-b18052b63dfd",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://gate.whapi.cloud/messages/voice",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"to\": \"{{ $('Webhook').item.json.body.messages[0].chat_id }}\",\"media\": \"data:audio/mpeg;base64,{{ $json.data }}\" ,\n            \"mime_type\": \"audio/mpeg\",\n            \"no_encode\": false\n        }",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        940,
+        4020
+      ],
+      "id": "6c4ecec2-d2ff-4792-b354-445023c9a65f",
+      "name": "Send_Audio",
+      "executeOnce": false,
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "DuZkiDdN4fHQRPaG",
+          "name": "Whapi Diogo"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://gate.whapi.cloud/messages/text",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $('Webhook').item.json.body.messages[0].from }}"
+            },
+            {
+              "name": "body",
+              "value": "={{ $json.output }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        260,
+        4240
+      ],
+      "id": "dec179ce-e075-4ec9-9697-36be155cd198",
+      "name": "Send_Text",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "AgRPRTji0uGd3CPC",
+          "name": "Header Auth account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "binaryToPropery",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        700,
+        4020
+      ],
+      "id": "fd0aabac-ddcf-44bb-bd2b-5ae1db7f8403",
+      "name": "Extract from File1"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('Message').item.json.body.messages[0].chat_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        3420,
+        1380
+      ],
+      "id": "07e17b5b-3e06-42d8-874f-b44161cac615",
+      "name": "Redis Chat Memory",
+      "credentials": {
+        "redis": {
+          "id": "lHYAv9RObXXzfXj5",
+          "name": "Redis account - default"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Base de Contatos2": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Data from Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "sumarizador": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "classificador": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "classificador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets4": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets6": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Google Sheets9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agente Base": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Separador": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Select Message Type2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Data from Switch1": {
+      "main": [
+        [
+          {
+            "node": "Normalize Prompt Data4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Download File Image1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "New user ?": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Data from Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "add new contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contact sheet": {
+      "main": [
+        [
+          {
+            "node": "New user ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message": {
+      "main": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "add new contact": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "notify new lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Whapi Typing Presence": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Whapi Read Message": {
+      "main": [
+        [
+          {
+            "node": "Whapi Typing Presence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Content": {
+      "main": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Data Loader": {
+      "ai_document": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "ai_document",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recursive Character Text Splitter": {
+      "ai_textSplitter": [
+        [
+          {
+            "node": "Default Data Loader",
+            "type": "ai_textSplitter",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Get Content",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store1",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI2": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Data from Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get messages buffer": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Push messager Buffer": {
+      "main": [
+        [
+          {
+            "node": "Get messages buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Delete Buffer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fundos": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Renda Fixa": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Message Type2": {
+      "main": [
+        [
+          {
+            "node": "Contact sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Download File Image1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Transcribe Audio File1": {
+      "main": [
+        [
+          {
+            "node": "Edit Normalize Transcribed Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI Transcribe Audio File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Normalize Transcribed Data1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Data from Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Prompt Data4": {
+      "main": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update": {
+      "ai_tool": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get messages buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "normalização": {
+      "main": [
+        [
+          {
+            "node": "Push messager Buffer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "messages": {
+      "main": [
+        []
+      ]
+    },
+    "Delete Buffer": {
+      "main": [
+        [
+          {
+            "node": "messages",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Eleven Labs Text to Speech": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If Response Type": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send_Text",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Eleven Labs Text to Speech",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Send_Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Separador",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "sumarizador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Chat Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Agente Base",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "164b1d65-d4a1-4a3a-a6b4-08fc194a9d56",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "771b1d2c34a1ae0cc110be08d7ca432bb82dd9a0659ebbadbb6e53ad686cadf6"
+  },
+  "id": "C0IzTQVoW05pmAkt",
+  "tags": [
+    {
+      "createdAt": "2025-03-12T20:55:12.483Z",
+      "updatedAt": "2025-03-12T20:55:12.483Z",
+      "id": "fvO9NPA2p213VBnP",
+      "name": "Teste"
+    }
+  ]
+}
